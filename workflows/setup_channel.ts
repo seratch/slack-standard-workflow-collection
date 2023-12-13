@@ -20,7 +20,7 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
     elements: [
       {
         name: "channel_name",
-        title: "Channel name",
+        title: "Channel Name",
         type: Schema.types.string, // => "plain_text_input"
         minLength: 3, // inclusive
         maxLength: 80, // inclusive
@@ -29,7 +29,7 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
       },
       {
         name: "channel_topic",
-        title: "Channel topic",
+        title: "Channel Topic",
         type: Schema.types.string, // => "plain_text_input"
         minLength: 10, // inclusive
         maxLength: 250, // inclusive
@@ -54,7 +54,7 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
       },
       {
         name: "is_public",
-        title: "Public channel",
+        title: "Public Channel",
         type: Schema.types.boolean, // => "checkboxes"
       },
     ],
