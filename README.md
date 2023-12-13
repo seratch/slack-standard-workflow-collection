@@ -4,7 +4,7 @@ This repository is a collection of useful ["standard" workflow](https://slack.co
 
 ## Setup Channel
 
-[The "Setup Channel" workflow](https://github.com/seratch/slack-standard-workflow-collection/blob/main/workflows/setup_channel.ts) enables\ your workspace users to effortlessly create a new public or private channel in a single step.
+[The "Setup Channel" workflow](https://github.com/seratch/slack-standard-workflow-collection/blob/main/workflows/setup_channel.ts) enables your workspace users to effortlessly create a new public or private channel in a single step.
 
 When a user clicks the link trigger of this workflow, the following modal dialog pops up. All the user needs to do is to fill in the form and submit it.
 
