@@ -41,21 +41,26 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
         title: "Channel Managers",
         type: Schema.types.array, // => "multi_users_select"
         items: { type: Schema.slack.types.user_id },
+        default: [workflow.inputs.user_id],
         description:
           "You can only add users who are in this workspace. Attempts to add external folks you're connected via a Slack Connect channel will fail.",
       },
       {
         name: "channel_members",
-        title: "Channel Members",
+        title: "Initial Channel Members",
         type: Schema.types.array, // => "multi_users_select"
         items: { type: Schema.slack.types.user_id },
+        default: [workflow.inputs.user_id],
         description:
           "You don't need to add the channel managers you've selected above to this list. Also, you can only add users who are in this workspace. Attempts to add external folks you're connected via a Slack Connect channel will fail.",
       },
       {
-        name: "is_public",
-        title: "Public Channel",
+        name: "is_private",
+        title: "Private Channel?",
+        default: false,
         type: Schema.types.boolean, // => "checkboxes"
+        description:
+          "Making a channel public is generally recommended, but you can go with a private one as necessary.",
       },
     ],
     required: [
@@ -63,7 +68,7 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
       "channel_topic",
       "channel_managers",
       "channel_members",
-      "is_public",
+      "is_private",
     ],
   },
 });
@@ -71,7 +76,7 @@ const form = workflow.addStep(Schema.slack.functions.OpenForm, {
 const channelCreation = workflow.addStep(Schema.slack.functions.CreateChannel, {
   channel_name: form.outputs.fields.channel_name,
   manager_ids: form.outputs.fields.channel_managers,
-  is_private: !form.outputs.fields.is_private,
+  is_private: form.outputs.fields.is_private,
 });
 
 workflow.addStep(Schema.slack.functions.UpdateChannelTopic, {
